@@ -1,7 +1,7 @@
-import React from 'react'
 import todo from "../assets/todo_icon.png"
 import { Input } from './ui/input'
 import { Button } from './ui/button'
+import TodoItems from "./TodoItems";
 
 
 const Todo = () => {
@@ -12,7 +12,7 @@ const Todo = () => {
         <img className="w-14" src={todo} alt="Todo App icon" />
         <h1 className="text-[30pt] font-serif font-semibold">To-Do List</h1>
       </div>
-      {/* input box  */}
+      {/* Task Input Field & Add Button  */}
       <div className="flex items-center my-7 rounded-full bg-gray-200">
         <Input
           className="rounded-full inline bg-transparent text-lg border-0 outline-none flex-1 h-14 pl-6 pr-2 placeholder:text-slate-600 placeholder:text-lg font-mono ing-0 focus-visible:ring-offset-0 focus-visible:ring-0"
@@ -23,6 +23,11 @@ const Todo = () => {
           ADD +
         </Button>
       </div>
+        {/* todo list  */}
+        <div className="">
+          <TodoItems text={"Learn Coding"}/>
+          <TodoItems text={"Debugging the Code"}/>
+        </div>
     </div>
   );
 }
