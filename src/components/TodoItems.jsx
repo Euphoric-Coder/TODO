@@ -13,12 +13,12 @@ const TodoItems = ({ text, id, isComplete, deleteTodo, toogle }) => {
         }}
       >
         <img
-          className="w-7"
+          className="w-[35px]"
           src={isComplete ? check : uncheck}
           alt="Checked Icon"
         />
         <p
-          className={`text-slate-700 ml-4 text-[17px] decoration-slate-500 ${
+          className={`text-blue-900 ml-4 text-[20px] font-semibold italic decoration-blue-900 ${
             isComplete ? "line-through" : ""
           }`}
         >
