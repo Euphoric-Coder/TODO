@@ -2,7 +2,7 @@ import todo from "../assets/todo_icon.png";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import TodoItems from "./TodoItems";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Todo = () => {
 
@@ -27,10 +27,26 @@ const Todo = () => {
   };
   
   const deleteTodo = (id) => {
-    settodoList((prvTodos)=>{
-      return prvTodos.filter((todo) => todo.id !== id);
+    settodoList((prevTodos)=>{
+      return prevTodos.filter((todo) => todo.id !== id);
     });
   };
+  
+  const toogle = (id) => {
+    settodoList((prevTodos)=>{
+      return prevTodos.map((todo) => {
+        if(todo.id === id) {
+          return { ...todo, isComplete: !todo.isComplete };
+        }
+        return todo;
+      });
+    });
+  };
+  useEffect(()=>{
+    console.log(todoList);
+    
+  }, [todoList])
+
 
   return (
     <div className="bg-white place-self-center w-11/12 max-w-md flex flex-col p-7 min-h-[550px] rounded-3xl">
@@ -54,7 +70,7 @@ const Todo = () => {
       {/* Todo List Section  */}
       <div className="">
         {todoList.map((item, index)=>{
-          return <TodoItems key={index} text={item.text} id={item.id} isComplete={item.isComplete} deleteTodo={deleteTodo}/>
+          return <TodoItems key={index} text={item.text} id={item.id} isComplete={item.isComplete} deleteTodo={deleteTodo} toogle={toogle}/>
         })}
       </div>
     </div>
